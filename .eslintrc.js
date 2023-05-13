@@ -32,5 +32,6 @@ module.exports = {
     'react/prefer-stateless-function': 0,
     'react/jsx-no-undef': 0,
     'react/no-unused-state': 0,
+    'import/no-extraneous-dependencies': 0,
   },
 };
