@@ -33,5 +33,6 @@ module.exports = {
     'react/jsx-no-undef': 0,
     'react/no-unused-state': 0,
     'import/no-extraneous-dependencies': 0,
+    'import/no-duplicates': 0,
   },
 };
