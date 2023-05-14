@@ -11,14 +11,13 @@ import './Main.css';
 export default class Main extends Component {
   state = {
     newTask: '',
-    tasks: [
-
-    ],
+    tasks: [],
+    index: -1,
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { tasks } = this.state;
+    const { tasks, index } = this.state;
     let { newTask } = this.state;
     newTask = newTask.trim();
 
@@ -26,14 +25,33 @@ export default class Main extends Component {
 
     const newTasksList = [...tasks];
 
-    this.setState({
-      tasks: [...newTasksList, newTask],
-    });
+    if (index === -1) {
+      this.setState({
+        tasks: [...newTasksList, newTask],
+        newTask: '',
+      });
+    } else {
+      newTasksList[index] = newTask;
+
+      this.setState({
+        tasks: [...newTasksList],
+        index: -1,
+      });
+    }
   };
 
   handleChange = (e) => {
     this.setState({
       newTask: e.target.value,
+    });
+  };
+
+  handleEdit = (e, index) => {
+    const { tasks } = this.state;
+
+    this.setState({
+      index,
+      newTask: tasks[index],
     });
   };
 
@@ -66,7 +84,7 @@ export default class Main extends Component {
             <li key={task}>
               {task}
               <span>
-                <FaEdit className="edit" />
+                <FaEdit onClick={(e) => this.handleEdit(e, index)} className="edit" />
                 <FaWindowClose onClick={(e) => this.handleDelete(e, index)} className="delete" />
               </span>
             </li>
