@@ -34,5 +34,6 @@ module.exports = {
     'react/no-unused-state': 0,
     'import/no-extraneous-dependencies': 0,
     'import/no-duplicates': 0,
+    'linebreak-style': 0,
   },
 };
